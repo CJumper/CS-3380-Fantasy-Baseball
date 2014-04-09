@@ -1,6 +1,6 @@
 <?php
 
-	$file = fopen("Batting.txt", "r");
+	$file = fopen("newMaster.txt", "r");
 	$currentfile = 'nextData.sql';
 	$newfile = file_get_contents($currentfile);
 	$count = 0;
@@ -12,30 +12,29 @@
    		$tok = explode(",", $line);
 
 
+//FOR MASTER ONLY KEEP 0,1,16, AND 17
 
+		// if(($tok[4] >= 1972)){
 
-		if($tok[1] >= 2010){
+		// 	$commatest = substr($line, -1);
+  //  			if($commatest == ","){
+	 //   			//echo "\n".$line."\n\n";
 
-			$commatest = substr($line, -1);
-   			if($commatest == ","){
-	   			//echo "\n".$line."\n\n";
-
-	   			$line = substr($line, 0, -1);
-	   		}
-			// while((strpos($line, ',,'))){
-			// 		$commas = ",,";
-			// 		$zeros = ",0,";
-	  //  				$line = str_replace($commas, $zeros, $line);
-	  //  			//echo $line."\n\n";
-   // 			}
+	 //   			$line = substr($line, 0, -1);
+	 //   		}
+		// 	while((strpos($line, ',,'))){
+		// 			$commas = ",,";
+		// 			$zeros = ",0,";
+	 //   				$line = str_replace($commas, $zeros, $line);
+	 //   			echo $line."\n\n";
+  //  			}
    			$line = str_replace('"', "'", $line);
-			$newline = "INSERT INTO baseball.batting VALUES (".$line;
+			$newline = "INSERT INTO baseball.master VALUES (".$line;
    			$newline .= ");\n";
+   			//$newline = $tok[0].",".$tok[1].",".$tok[16].",".$tok[17]."\n";
 			$newfile .= $newline;
    			file_put_contents($currentfile, $newfile);
-   		}
-
-
+   		//}
 
 	}
 fclose($file);

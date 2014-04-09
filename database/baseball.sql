@@ -20,9 +20,9 @@ CREATE TABLE baseball.user_info (
 	second		varchar(80) default NULL,
 	third		varchar(80) default NULL,
 	short		varchar(80) default NULL,
-	left		varchar(80) default NULL,
-	mid			varchar(80) default NULL,
-	right		varchar(80) default NULL
+	leftF		varchar(80) default NULL,
+	midF		varchar(80) default NULL,
+	rightF		varchar(80) default NULL
 );
 
 -- Table: baseball.authentication
